@@ -27,12 +27,15 @@ function App() {
       {products
         .filter((product) => Number(product.price.replace('$ ', '') > 1500))
         .map((product) => (
-          <div>
+          <div key={product.id}>
             <h1>{product.name}</h1>
             <p>Price: {product.price}</p>
             <ul>
               {product.colors.map((item) => (
-                <li style={{ backgroundColor: item, color: 'white' }}>
+                <li
+                  key={item}
+                  style={{ backgroundColor: item, color: 'white' }}
+                >
                   {item}
                 </li>
               ))}
