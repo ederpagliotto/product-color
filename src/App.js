@@ -22,12 +22,25 @@ const products = [
 ];
 
 function App() {
-  //filtering prices > than 1500
-  const items = products.filter(
-    ({ price }) => Number(price.replace('$ ', '')) > 1500,
+  return (
+    <section>
+      {products
+        .filter((product) => Number(product.price.replace('$ ', '') > 1500))
+        .map((product) => (
+          <div>
+            <h1>{product.name}</h1>
+            <p>Price: {product.price}</p>
+            <ul>
+              {product.colors.map((item) => (
+                <li style={{ backgroundColor: item, color: 'white' }}>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+    </section>
   );
-
-  return <section></section>;
 }
 
 export default App;
